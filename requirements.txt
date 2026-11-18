@@ -1,0 +1,12 @@
+torch>=2.7          # RTX 50-series (Blackwell) needs a CUDA 12.8+ build; tested with 2.14.1+cu130
+transformers>=4.56,<5
+peft>=0.13
+datasets>=3.0
+accelerate
+pyyaml
+numpy
+pandas
+scipy
+tabulate
+matplotlib
+pytest

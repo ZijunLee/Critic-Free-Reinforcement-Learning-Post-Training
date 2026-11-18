@@ -1,0 +1,22 @@
+# CPU smoke run: checks the pipeline end to end in a few minutes; numbers are meaningless.
+model_name: Qwen/Qwen2.5-0.5B-Instruct
+dtype: float32
+device: cpu
+gradient_checkpointing: false
+output_dir: runs_smoke
+overwrite: true
+
+group_size: 2
+prompts_per_step: 2
+prompts_per_micro: 1
+max_new_tokens: 24
+gen_batch_size: 4
+
+num_steps: 2
+warmup_steps: 1
+train_size: 16
+eval_every: 1
+eval_size: 4
+final_eval_size: 4
+eval_batch_size: 4
+log_samples: 1

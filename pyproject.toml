@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cfrl"
+version = "0.1.0"
+description = "Controlled comparison of critic-free policy-gradient estimators (REINFORCE, ReMax, RLOO, GRPO) for LLM post-training on GSM8K"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = ["network: needs to download a tokenizer from the Hugging Face Hub"]

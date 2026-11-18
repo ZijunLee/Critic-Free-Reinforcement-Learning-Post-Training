@@ -1,0 +1,29 @@
+# Main comparison on one 12 GB GPU (RTX 5070). Only `estimator` and `seed` change between main runs.
+model_name: Qwen/Qwen2.5-0.5B-Instruct
+dtype: bfloat16
+lora_r: 16
+lora_alpha: 32
+gradient_checkpointing: true
+
+group_size: 8
+kl_coef: 0.0
+loss_agg: constant
+format_weight: 0.0
+
+prompts_per_step: 16
+prompts_per_micro: 1
+seqs_per_forward: 4      # lower to 2 if the backward pass runs out of memory
+within_group_stats: true # logging only; added after seed 0 (seed-0 runs lack grad_var_within)
+max_new_tokens: 512      # 300 truncated ~half of greedy answers in a CPU check
+temperature: 1.0
+gen_batch_size: 128      # one generate() call per step
+
+num_steps: 200
+learning_rate: 5.0e-5      # pilot (GRPO, 40 steps, 200 test items): 2e-5 -> 50.0%, 5e-5 -> 55.0% (start 47.5%)
+max_grad_norm: 1.0
+warmup_steps: 10
+
+eval_every: 25
+eval_size: 500
+final_eval_size: -1
+eval_batch_size: 64

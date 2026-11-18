@@ -1,0 +1,11 @@
+runs/
+runs_*/
+results_pilot/
+logs/
+runs_pilot_*.log
+__pycache__/
+*.egg-info/
+.pytest_cache/
+
+# internal notes, not part of the public repository
+RUNBOOK_zh.md
